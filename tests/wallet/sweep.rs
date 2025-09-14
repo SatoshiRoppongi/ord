@@ -141,7 +141,11 @@ fn sweep_respects_dry_run() {
 #[test]
 fn sweep_only_works_with_p2wpkh() {
   let core = mockcore::spawn();
-  let ord = TestServer::spawn_with_server_args(&core, &["--index-addresses", "--index-runes"], &[]);
+  let ord = TestServer::spawn_with_server_args(
+    &core,
+    &["--index-addresses", "--index-runes"],
+    &["--no-sync"],
+  );
 
   create_wallet(&core, &ord);
 
